@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歌聲轉破音直笛之聆聽測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            table-layout: fixed;
+            max-width: 480px;
+            min-width: 320px;
+        }
+        .question {
+            margin: 20px auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+        .question th, .question td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .question th {
+            font-size: 24px;
+            text-align: center;
+        }
+        .play-button {
+            width: 50px;
+            height: 50px;
+            line-height: 25px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #ccc;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let currentAudio = null;
+        let currentButton = null;
+
+        function togglePlay(audioId) {
+            let audio = document.getElementById(audioId);
+            let button = document.querySelector(`button[onclick="togglePlay('${audioId}')"]`);
+            console.log(button);
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                if (currentButton) currentButton.textContent = '▶';
+            }
+            if (audio.paused) {
+                audio.play();
+                button.textContent = '\u{23F8}';
+                currentAudio = audio;
+                currentButton = button;
+
+                audio.onended = function() {
+                    button.textContent = '▶';
+                    currentAudio = null;
+                    currentButton = null;
+                };
+            } else {
+                audio.pause();
+                button.textContent = '▶';
+                currentAudio = null;
+                currentButton = null;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>歌聲轉破音直笛之聆聽測試</h1>
+
+    <!-- A 題型 -->
+    <td><strong>破音直笛範例音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('example')">▶</button>
+        <audio id="example"><source src="listening_test/example.wav" type="audio/wav"></audio>
+    </td>
+    <h2>Part A</h2>
+    <table class="question">
+        <tr>
+        <th>A.1</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A1')">▶</button>
+        <audio id="original_A1"><source src="listening_test/A01.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A1_a')">▶</button>
+        <audio id="test_A1_a"><source src="listening_test/A01_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A1_b')">▶</button>
+        <audio id="test_A1_b"><source src="listening_test/A01_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>A.2</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A2')">▶</button>
+        <audio id="original_A2"><source src="listening_test/A02.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A2_a')">▶</button>
+        <audio id="test_A2_a"><source src="listening_test/A02_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A2_b')">▶</button>
+        <audio id="test_A2_b"><source src="listening_test/A02_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>A.3</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A3')">▶</button>
+        <audio id="original_A3"><source src="listening_test/A03.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A3_a')">▶</button>
+        <audio id="test_A3_a"><source src="listening_test/A03_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A3_b')">▶</button>
+        <audio id="test_A3_b"><source src="listening_test/A03_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>A.4</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A4')">▶</button>
+        <audio id="original_A4"><source src="listening_test/A04.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A4_a')">▶</button>
+        <audio id="test_A4_a"><source src="listening_test/A04_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A4_b')">▶</button>
+        <audio id="test_A4_b"><source src="listening_test/A04_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>A.5</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A5')">▶</button>
+        <audio id="original_A5"><source src="listening_test/A05.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A5_a')">▶</button>
+        <audio id="test_A5_a"><source src="listening_test/A05_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A5_b')">▶</button>
+        <audio id="test_A5_b"><source src="listening_test/A05_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>A.6</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A6')">▶</button>
+        <audio id="original_A6"><source src="listening_test/A06.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A6_a')">▶</button>
+        <audio id="test_A6_a"><source src="listening_test/A06_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A6_b')">▶</button>
+        <audio id="test_A6_b"><source src="listening_test/A06_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>A.7</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A7')">▶</button>
+        <audio id="original_A7"><source src="listening_test/A07.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A7_a')">▶</button>
+        <audio id="test_A7_a"><source src="listening_test/A07_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A7_b')">▶</button>
+        <audio id="test_A7_b"><source src="listening_test/A07_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>A.8</th>
+        <td><strong>原音檔</strong><br>
+        <button class="play-button" onclick="togglePlay('original_A8')">▶</button>
+        <audio id="original_A8"><source src="listening_test/A08.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A8_a')">▶</button>
+        <audio id="test_A8_a"><source src="listening_test/A08_a.wav" type="audio/wav"></audio></td>
+        <td><strong>測試音檔 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_A8_b')">▶</button>
+        <audio id="test_A8_b"><source src="listening_test/A08_b.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+
+    <!-- B 題型 -->
+    <h2>Part B</h2>
+    <table class="question">
+        <tr>
+        <th>B.1</th>
+        <td><strong>破音直笛 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B1_a')">▶</button><audio id='test_B1_a'><source src="listening_test/B01_a.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B1_b')">▶</button><audio id='test_B1_b'><source src="listening_test/B01_b.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 c</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B1_c')">▶</button><audio id='test_B1_c'><source src="listening_test/B01_c.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>B.2</th>
+        <td><strong>破音直笛 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B2_a')">▶</button><audio id='test_B2_a'><source src="listening_test/B02_a.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B2_b')">▶</button><audio id='test_B2_b'><source src="listening_test/B02_b.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 c</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B2_c')">▶</button><audio id='test_B2_c'><source src="listening_test/B02_c.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>B.3</th>
+        <td><strong>破音直笛 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B3_a')">▶</button><audio id='test_B3_a'><source src="listening_test/B03_a.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B3_b')">▶</button><audio id='test_B3_b'><source src="listening_test/B03_b.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 c</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B3_c')">▶</button><audio id='test_B3_c'><source src="listening_test/B03_c.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>B.4</th>
+        <td><strong>破音直笛 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B4_a')">▶</button><audio id='test_B4_a'><source src="listening_test/B04_a.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B4_b')">▶</button><audio id='test_B4_b'><source src="listening_test/B04_b.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 c</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B4_c')">▶</button><audio id='test_B4_c'><source src="listening_test/B04_c.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>B.5</th>
+        <td><strong>破音直笛 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B5_a')">▶</button><audio id='test_B5_a'><source src="listening_test/B05_a.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B5_b')">▶</button><audio id='test_B5_b'><source src="listening_test/B05_b.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 c</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B5_c')">▶</button><audio id='test_B5_c'><source src="listening_test/B05_c.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+        <table class="question">
+        <tr>
+        <th>B.6</th>
+        <td><strong>破音直笛 a</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B6_a')">▶</button><audio id='test_B6_a'><source src="listening_test/B06_a.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 b</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B6_b')">▶</button><audio id='test_B6_b'><source src="listening_test/B06_b.wav" type="audio/wav"></audio></td>
+        <td><strong>破音直笛 c</strong><br>
+        <button class="play-button" onclick="togglePlay('test_B6_c')">▶</button><audio id='test_B6_c'><source src="listening_test/B06_c.wav" type="audio/wav"></audio></td>
+        </tr>
+        </table>
+</body>
+</html>
